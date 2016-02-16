@@ -5,6 +5,7 @@ namespace Moip\Tests;
 use Mockery as m;
 use Moip\Moip;
 use Moip\MoipAuthentication;
+use Moip\Utils;
 use PHPUnit_Framework_TestCase as TestCase;
 
 /**

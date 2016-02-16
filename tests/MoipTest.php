@@ -3,6 +3,7 @@
 namespace Moip\Tests;
 
 use Mockery as m;
+use Moip\Utils;
 
 /**
  * class MoipTest.
@@ -116,5 +117,33 @@ class MoipTest extends MoipTestCase
         $multiorders = new \Moip\Resource\Multiorders($this->moip);
 
         $this->assertEquals($multiorders, $this->moip->multiorders());
+    }
+
+    /**
+     * Test the convertion from money to cents
+     */
+
+    public function testToCents(){
+
+        $cases = [
+            [6.9, 690],
+            [6.99, 699],
+            [10.32, 1032],
+            [10.329, 1032],
+            [10.93, 1093],
+            [10.931, 1093],
+        ];
+
+        foreach($cases as $case){
+
+            list($actual, $expected) = $case;
+            $actual = Utils::toCents($actual);
+
+            $this->assertEquals($expected, $actual);
+
+
+        }
+
+
     }
 }
